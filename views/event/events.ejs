@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs') %>
+
+        <% if(events.length) { %>
+            <% if(events.some(e => e.category === 'watching')) { %>
+                <h2>Watching</h2>
+                <ul>
+                    <% events.forEach(e => {if(e.category === 'watching') { %>
+                        <li><a href="/events/<%= e.id %>"><%= e.title %></a></li>
+                    <% }}); %>
+                </ul>
+            <% } %>
+            <% if(events.some(e => e.category === 'fishing')) { %>
+                <h2>Fishing</h2>
+                <ul>
+                    <% events.forEach(e => {if(e.category === 'fishing') { %>
+                        <li><a href="/events/<%= e.id %>"><%= e.title %></a></li>
+                    <% }}); %>
+                </ul>
+            <% } %>
+            <% if(events.some(e => e.category === 'cooking')) { %>
+                <h2>Cooking</h2>
+                <ul>
+                    <% events.forEach(e => {if(e.category === 'cooking') { %>
+                        <li><a href="/events/<%= e.id %>"><%= e.title %></a></li>
+                    <% }}); %>
+                </ul>
+            <% } %>
+            <% if(events.some(e => e.category === 'news')) { %>
+                <h2>News</h2>
+                <ul>
+                    <% events.forEach(e => {if(e.category === 'news') { %>
+                        <li><a href="/events/<%= e.id %>"><%= e.title %></a></li>
+                    <% }}); %>
+                </ul>
+            <% } %>
+            <% if(events.some(e => e.category === 'gear')) { %>
+                <h2>Gear</h2>
+                <ul>
+                    <% events.forEach(e => {if(e.category === 'gear') { %>
+                        <li><a href="/events/<%= e.id %>"><%= e.title %></a></li>
+                    <% }}); %>
+                </ul>
+            <% } %>
+            <% if(events.some(e => e.category === 'other')) { %>
+                <h2>Other</h2>
+                <ul>
+                    <% events.forEach(e => {if(e.category === 'other') { %>
+                        <li><a href="/events/<%= e.id %>"><%= e.title %></a></li>
+                    <% }}); %>
+                </ul>
+            <% } %>
+        <% } else { %>
+            <h2>There are no events scheduled, try and organize your own!</h2>
+        <% } %>
+    </main>
+
+<%- include('../partials/footer.ejs') %>

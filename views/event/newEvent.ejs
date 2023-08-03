@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>
+
+        <form action="/events" enctype="multipart/form-data" method="POST">
+            <div>
+                <label for="category"></label>
+                <select name="category" id="category" required>
+                    <option value="" disabled selected>--Select a Category--</option>
+                    <option value="watching">Watching</option>
+                    <option value="fishing">Fishing</option>
+                    <option value="cooking">Cooking</option>
+                    <option value="news">News</option>
+                    <option value="gear">Gear</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="title" id="title" placeholder="Title" required>
+            </div>
+            <div>
+                <textarea name="details" id="details" cols="30" rows="10" placeholder="Details" required></textarea>
+            </div>
+            <div>
+                <input type="text" name="location" id="location" placeholder="Location" required>
+            </div>
+            <div>
+                <input type="datetime-local" name="start" id="start" required>
+            </div>
+            <div>
+                <input type="datetime-local" name="end" id="end" required>
+            </div>
+            <div>
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg" required>
+            </div>
+            <div class="btn">
+                <input type="submit" name="submit" id="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+
+<%- include('../partials/footer.ejs') %>

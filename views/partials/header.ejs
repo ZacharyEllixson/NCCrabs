@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Zachary Ellixson">
+    <title>NCCrabs</title>
+    <link rel="icon" type="image/x-icon" href="/images/Crab.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1><a href="/">NCCrabs</a></h1>
+        <nav>
+            <ul>
+                <% if(!user) { %>
+                    <li><a href="/user/new">Sign Up</a></li>
+                    <li><a href="/user/login">Login</a></li>
+                <% } else { %>
+                    <li><a href="/events/newEvent">New Event</a></li>
+                    <li><a href="/user/profile"><%= firstName %>'s Profile</a></li>
+                    <li><a href="/user/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </nav>
+        <p><a href="/events">Events</a></p>
+    </header>
+    <main>
+        
+    <% if(errorMessages.length > 0) {
+        errorMessages.forEach(message => { %> 
+            <div class="error flash"><%= message %></div>
+        <% });
+    } %>
+
+    <% if(successMessages.length > 0) {
+        successMessages.forEach(message => { %> 
+            <div class="success flash"><%= message %></div>
+        <% });
+    } %>

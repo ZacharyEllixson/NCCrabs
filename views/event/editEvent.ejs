@@ -1,0 +1,64 @@
+<%- include('../partials/header.ejs') %>
+
+        <form method="POST" enctype="multipart/form-data" action="/events/<%= event.id %>?_method=PUT">
+            <div>
+                <label for="category"></label>
+                <select name="category" id="category" required>
+                    <option value="" disabled>--Select a Category--</option>
+                    <% if (event.category === 'watching') { %>
+                        <option value="watching" selected>Watching</option>
+                    <% } else { %> 
+                        <option value="watching">Watching</option>
+                    <% } %>
+                    <% if (event.category === 'fishing') { %>
+                        <option value="fishing" selected>Fishing</option>
+                    <% } else { %> 
+                        <option value="fishing">Fishing</option>
+                    <% } %>
+                    <% if (event.category === 'cooking') { %>
+                        <option value="cooking" selected>Cooking</option>
+                    <% } else { %> 
+                        <option value="cooking">Cooking</option>
+                    <% } %>
+                    <% if (event.category === 'news') { %>
+                        <option value="news" selected>News</option>
+                    <% } else { %> 
+                        <option value="news">News</option>
+                    <% } %>
+                    <% if (event.category === 'gear') { %>
+                        <option value="gear" selected>Gear</option>
+                    <% } else { %> 
+                        <option value="gear">Gear</option>
+                    <% } %>
+                    <% if (event.category === 'other') { %>
+                        <option value="other" selected>Other</option>
+                    <% } else { %> 
+                        <option value="other">Other</option>
+                    <% } %>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="title" id="title" placeholder="Title" value="<%= event.title %>" required>
+            </div>
+            <div>
+                <textarea name="details" id="details" cols="30" rows="10" placeholder="Details"><%= event.details %></textarea>
+            </div>
+            <div>
+                <input type="text" name="location" id="location" placeholder="Location" value="<%= event.location %>" required>
+            </div>
+            <div>
+                <input type="datetime-local" name="start" id="start" value="<%= startTime %>" required>
+            </div>
+            <div>
+                <input type="datetime-local" name="end" id="end" value="<%= endTime %>" required>
+            </div>
+            <div>
+                <input type="file" name="image" id="image" accept="image/png, image/jpeg" required>
+            </div>
+            <div class="btn">
+                <input type="submit" name="submit" id="submit" value="Submit">
+            </div>
+        </form>
+    </main>
+
+<%- include('../partials/footer.ejs') %>

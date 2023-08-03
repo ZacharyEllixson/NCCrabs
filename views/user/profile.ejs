@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs')%>
+
+        <% if(user) { %>
+            <h2><%= user.firstName %>'s Events</h2>
+        <% } %>
+        <% if(events.length) { %>
+            <table class="table">
+                <% events.forEach(event => { %>
+                    <tr>
+                        <form>
+                            <td><p class="event"><a href="/events/<%= event.id %>"><%= event.title %></a></p></td>
+                            <td><button type="submit" formmethod="GET" formaction="/events/<%= event.id %>/edit">Edit</button></td>
+                            <td><button type="submit" formmethod="POST" formaction="/events/<%= event.id %>?_method=DELETE">Delete</button></td>
+                        </form>
+                    </tr>          
+                <% }); %>
+            </table>    
+        <% } 
+        
+        if(rsvps.length) { %>
+            <h2><%= user.firstName %>'s RSVPs</h2>
+            <table>
+                <% rsvps.forEach(rsvp => { %>
+                    <tr>
+                        <td><p class="event"><a href="/events/<%= rsvp.event._id %>"><%= rsvp.event.title %></a></p></td>
+                        <td><p> <%= rsvp.status %></p></td>
+                    </tr>
+                <% }) %>
+            </table>
+        <% } %>
+    </main>
+
+<%- include('../partials/footer.ejs')%>

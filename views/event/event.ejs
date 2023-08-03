@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+
+        <h2> <%= event.title %> </h2>
+        <% if (user && user != event.host._id) {%>
+            <form action="/events/<%= event.id %>/rsvp" class="button-container">
+                <p>RSVP?</p>
+                <button type="submit" formmethod="POST" name="rsvp" value="yes">Yes</button>
+                <button type="submit" formmethod="POST" name="rsvp" value="no">No</button>
+                <button type="submit" formmethod="POST" name="rsvp" value="maybe">Maybe</button>
+            </form>
+        <% } %>
+        <div class="image-container">
+            <img src="/images/<%= typeof event.image !== 'undefined' ? event.image : '' %>" alt="<%= event.title %>" width="200" height="200">
+        </div>
+        <div>
+            <p>Host: <%= event.host.firstName %> </p>
+            <p>Start Time: <%= startTime %> </p>
+            <p>End Time: <%= endTime %> </p>
+            <p>Location: <%= event.location %> </p>
+            <p>Details: <%= event.details %> </p>
+            <p>RSVPs: <%= rsvps.length %></p>
+        </div>
+    </main>
+
+<%- include('../partials/footer.ejs') %>
